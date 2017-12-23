@@ -32,7 +32,7 @@ module.exports = function (args, moduleDir, debug) {
 		if (process.env.JOBS) {
 			makeopts.push("-j" + process.env.JOBS);
 		}
-		prerequisite = exec('make', ['-f', 'Makefile.release'], path.dirname(lzz));
+		prerequisite = exec('make', makeopts, path.dirname(lzz));
 	}
 
 	var gypArgs = debug ? ['rebuild', '--debug'] : ['rebuild'];
