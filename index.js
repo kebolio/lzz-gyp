@@ -28,6 +28,10 @@ module.exports = function (args, moduleDir, debug) {
 
 	var prerequisite = Promise.resolve();
 	if (buildNewLzz) {
+		var makeopts = ['-f', 'Makefile.release'];
+		if (process.env.JOBS) {
+			makeopts.push("-j" + process.env.JOBS);
+		}
 		prerequisite = exec('make', ['-f', 'Makefile.release'], path.dirname(lzz));
 	}
 
